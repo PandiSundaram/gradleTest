@@ -4,3 +4,36 @@
  * This is a general purpose Gradle build.
  * To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.2.1/samples
  */
+
+
+plugins{
+    java
+}
+
+
+
+
+
+
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies{
+        testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+    }
+
+
+tasks.named<Test>("test") {  // needed this for junit 5 for reports
+    useJUnitPlatform()
+}
+
+
+tasks.named<Jar>("jar"){    //needed to find the main classs for jar task
+    manifest{
+        attributes["Main-Class"] = "com.pandi.Newtest"
+    }
+
+
+}
